@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Şehrim: Niğde | Hasan Zübeyir Karahan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">Port<span>folio</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">🏠 Hakkımda</a></li>
+        <li><a href="ozgecmis.html">📄 Özgeçmiş</a></li>
+        <li><a href="sehrim.html" class="active">🏙️ Şehrim</a></li>
+        <li><a href="miras.html">🏛️ Mirasımız</a></li>
+        <li><a href="ilgialanlarim.html">🎬 İlgi Alanlarım</a></li>
+        <li><a href="iletisim.html">✉️ İletişim</a></li>
+        <li><a href="login.html">🔐 Giriş</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="page-wrapper">
+      <section class="hero" style="padding: 4rem 2rem 3rem">
+        <div class="hero-content">
+          <h1>🏙️ <span style="color: var(--accent)">Niğde</span></h1>
+          <p>Medeniyetlerin yaşatıldığı, elmasıyla ünlü kadim şehir.</p>
+        </div>
+      </section>
+
+      <div class="section">
+        <div class="city-stat-grid">
+          <div class="city-stat">
+            <div class="city-stat-value">365K</div>
+            <div class="city-stat-label">Nüfus</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-value">7.312 km²</div>
+            <div class="city-stat-label">Yüzölçümü</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-value">51</div>
+            <div class="city-stat-label">Plaka Kodu</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-value">1.229 m</div>
+            <div class="city-stat-label">Rakım</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-value">6 İlçe</div>
+            <div class="city-stat-label">İlçe Sayısı</div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <h2 class="section-title">Niğde <span>Hakkında</span></h2>
+          <div class="divider"></div>
+          <p style="color: var(--text-light); line-height: 1.9">
+            Niğde, Türkiye'nin İç Anadolu Bölgesi'nde, Kapadokya bölgesinin
+            güneyinde yer alır. Hititlerden Roma'ya, Selçuklulardan Osmanlı'ya
+            kadar pek çok medeniyete ev sahipliği yapmış tarihi bir kenttir.
+            Doğusunda Aladağlar Milli Parkı ile doğa sporlarının merkezidir.
+            Tarım alanında ise özellikle elması ve patatesi ile Türkiye
+            genelinde büyük bir üne sahiptir.
+          </p>
+        </div>
+
+        <h2 class="section-title">📸 Şehirden <span>Kareler</span></h2>
+        <div class="divider"></div>
+        <div class="slider-container" id="citySlider">
+          <div class="slider-track">
+            <div class="slide">
+              <img
+                src="images/kule.jpg"
+                alt="Niğde Kalesi ve Saat Kulesi"
+                style="width: 100%; height: 420px; object-fit: cover"
+              />
+              <div class="slide-caption">
+                <h3>Niğde Kalesi</h3>
+                <p>
+                  Şehrin kalbinde yer alan tarihi kale ve simge saat kulesi.
+                </p>
+              </div>
+            </div>
+
+            <div class="slide">
+              <img
+                src="images/elma.jpg"
+                alt="Niğde Elması"
+                style="width: 100%; height: 420px; object-fit: cover"
+              />
+              <div class="slide-caption">
+                <h3>Meşhur Niğde Elması</h3>
+                <p>
+                  Türkiye'nin en lezzetli elmalarının yetiştiği bereketli
+                  topraklar.
+                </p>
+              </div>
+            </div>
+
+            <div class="slide">
+              <img
+                src="images/aladag.jpg"
+                alt="Aladağlar Milli Parkı"
+                style="width: 100%; height: 420px; object-fit: cover"
+              />
+              <div class="slide-caption">
+                <h3>Aladağlar</h3>
+                <p>Dağcılık ve trekking tutkunlarının vazgeçilmez rotası.</p>
+              </div>
+            </div>
+          </div>
+          <button class="slider-btn slider-prev">&#8249;</button>
+          <button class="slider-btn slider-next">&#8250;</button>
+          <div class="slider-dots"></div>
+        </div>
+
+        <h2 class="section-title mt-4">📍 Gezilecek <span>Yerler</span></h2>
+        <div class="divider"></div>
+        <div class="places-grid">
+          <div class="place-card">
+            <img
+              src="images/manastır.jpg"
+              alt="Gümüşler Manastırı"
+              style="
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+              "
+            />
+            <div class="place-body">
+              <h4>Gümüşler Manastırı</h4>
+              <p>
+                Bizans döneminden kalma, eşsiz duvar resimlerine sahip kaya
+                manastırı.
+              </p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img
+              src="images/kaplıca.jpg"
+              alt="Çiftehan Kaplıcaları"
+              style="
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+              "
+            />
+            <div class="place-body">
+              <h4>Çiftehan Kaplıcaları</h4>
+              <p>
+                Şifalı suları ile bilinen bölgenin en önemli termal merkezi.
+              </p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img
+              src="images/müze.jpg"
+              alt="Niğde Müzesi"
+              style="
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+              "
+            />
+            <div class="place-body">
+              <h4>Niğde Müzesi</h4>
+              <p>
+                Prehistorik dönemden Osmanlı'ya kadar zengin bir koleksiyon.
+              </p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img
+              src="images/milli.jpg"
+              alt="Aladağlar Milli Parkı"
+              style="
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+              "
+            />
+            <div class="place-body">
+              <h4>Aladağlar Milli Parkı</h4>
+              <p>Eşsiz buzul gölleri ve zirveleriyle doğa harikası.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          © 2025 Hasan Zübeyir Karahan | Sakarya Üniversitesi |
+          <a href="index.html">Ana Sayfa</a>
+        </p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        initSlider("citySlider");
+      });
+    </script>
+  </body>
+</html>
