@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>İlgi Alanlarım | Web Projesi</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">Port<span>folio</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">🏠 Hakkımda</a></li>
+        <li><a href="ozgecmis.html">📄 Özgeçmiş</a></li>
+        <li><a href="sehrim.html">🏙️ Şehrim</a></li>
+        <li><a href="miras.html">🏛️ Mirasımız</a></li>
+        <li>
+          <a href="ilgialanlarim.html" class="active">🎬 İlgi Alanlarım</a>
+        </li>
+        <li><a href="iletisim.html">✉️ İletişim</a></li>
+        <li><a href="login.html">🔐 Giriş</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="page-wrapper">
+      <section class="hero" style="padding: 4rem 2rem 3rem">
+        <div class="hero-content">
+          <h1>🎬 İlgi <span style="color: var(--accent)">Alanlarım</span></h1>
+          <p>Popüler filmler – TMDB API'den anlık verilerle sinema dünyası.</p>
+        </div>
+      </section>
+
+      <div class="section">
+        <div class="card mb-3">
+          <h2 class="section-title">🔍 Film <span>Ara</span></h2>
+          <div class="divider"></div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Film adı girin..."
+              style="flex: 1; min-width: 200px"
+            />
+            <button class="btn btn-primary" onclick="searchMovies()">
+              Ara
+            </button>
+            <button class="btn btn-secondary" onclick="loadPopular()">
+              Popüler
+            </button>
+          </div>
+        </div>
+
+        <div id="movieGrid" class="api-grid">
+          <div class="api-loader" id="loader"><p>Yükleniyor...</p></div>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Hasan Zübeyir Karahan | Sakarya Üniversitesi</p>
+      </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+      const TMDB_API_KEY = "82c07cdee9da4190896d4aa0542d0f85";
+      const TMDB_BASE = "https://api.themoviedb.org/3";
+      const IMG_BASE = "https://image.tmdb.org/t/p/w500";
+      const LANG = "tr-TR";
+
+      async function fetchMovies(url) {
+        const grid = document.getElementById("movieGrid");
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          grid.innerHTML = "";
+          data.results.forEach((movie) => {
+            const card = document.createElement("div");
+            card.className = "api-card";
+            card.innerHTML = `<div class="api-card-img"><img src="${movie.poster_path ? IMG_BASE + movie.poster_path : ""}" alt="${movie.title}"></div><div class="api-card-body"><div class="api-card-title">${movie.title}</div></div>`;
+            grid.appendChild(card);
+          });
+        } catch (err) {
+          grid.innerHTML = "<p>Hata oluştu.</p>";
+        }
+      }
+      function loadPopular() {
+        fetchMovies(
+          `${TMDB_BASE}/movie/popular?api_key=${TMDB_API_KEY}&language=${LANG}`,
+        );
+      }
+      function searchMovies() {
+        const q = document.getElementById("searchInput").value;
+        fetchMovies(
+          `${TMDB_BASE}/search/movie?api_key=${TMDB_API_KEY}&language=${LANG}&query=${q}`,
+        );
+      }
+      document.addEventListener("DOMContentLoaded", loadPopular);
+    </script>
+  </body>
+</html>
