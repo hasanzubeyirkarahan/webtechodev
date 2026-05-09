@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Yap | Hasan Zübeyir Karahan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Login sayfasında navbar yok, sadece tam ekran giriş formu -->
+<div class="login-wrapper">
+  <div class="login-card">
+
+    <div class="login-logo">
+      <div class="logo-icon">🔐</div>
+      <h2>Güvenli Giriş</h2>
+      <p>Öğrenci hesabınızla giriş yapın</p>
+    </div>
+
+    <!-- Hata mesajı (PHP'den gelir) -->
+    <div id="loginHataDiv" style="display:none;background:#fff5f5;color:#dc2626;border:1px solid #fca5a5;padding:0.75rem 1rem;border-radius:8px;margin-bottom:1.2rem;font-size:0.9rem;">
+      ❌ Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyin.
+    </div>
+
+    <form id="loginForm" method="POST" action="php/login_kontrol.php">
+
+      <div class="form-group">
+        <label for="loginUser">Kullanıcı Adı (E-posta)</label>
+        <input
+          type="email"
+          id="loginUser"
+          name="kullanici"
+          class="form-control"
+          placeholder="bXXXXXXXXXX@sakarya.edu.tr"
+          autocomplete="username"
+        >
+        <div id="loginUserErr" class="form-error"></div>
+      </div>
+
+      <div class="form-group" style="margin-top:1rem;">
+        <label for="loginPass">Şifre (Öğrenci No)</label>
+        <div style="position:relative;">
+          <input
+            type="password"
+            id="loginPass"
+            name="sifre"
+            class="form-control"
+            placeholder="Öğrenci numaranız"
+            autocomplete="current-password"
+          >
+          <button
+            type="button"
+            onclick="togglePass()"
+            style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.1rem;"
+            id="togglePassBtn"
+          >👁️</button>
+        </div>
+        <div id="loginPassErr" class="form-error"></div>
+      </div>
+
+      <div style="margin:1rem 0;">
+        <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;cursor:pointer;">
+          <input type="checkbox" name="beniHatirla"> Beni Hatırla
+        </label>
+      </div>
+
+      <button
+        type="button"
+        onclick="handleLogin()"
+        class="btn btn-primary"
+        style="width:100%;padding:0.85rem;font-size:1rem;"
+      >
+        🔐 Giriş Yap
+      </button>
+
+    </form>
+
+    <div style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--text-light);">
+      <p>
+        <strong>Giriş Bilgileri:</strong><br>
+        Kullanıcı: <code>ÖĞRENONUN@sakarya.edu.tr</code><br>
+        Şifre: <code>ÖĞRENONUN</code>
+      </p>
+    </div>
+
+    <div style="text-align:center;margin-top:1rem;">
+      <a href="index.html" style="font-size:0.9rem;color:var(--text-light);">← Ana sayfaya dön</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Şifreyi göster/gizle
+  function togglePass() {
+    const inp = document.getElementById('loginPass');
+    const btn = document.getElementById('togglePassBtn');
+    if (inp.type === 'password') {
+      inp.type = 'text';
+      btn.textContent = '🙈';
+    } else {
+      inp.type = 'password';
+      btn.textContent = '👁️';
+    }
+  }
+
+  // Giriş butonuna basınca
+  function handleLogin() {
+    const valid = validateLogin(); // main.js'deki fonksiyon
+    if (valid) {
+      document.getElementById('loginForm').submit();
+    }
+  }
+
+  // URL'de ?hata=1 varsa hata mesajını göster (PHP yönlendirmesinden sonra)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('hata') === '1') {
+    document.getElementById('loginHataDiv').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
